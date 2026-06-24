@@ -1,16 +1,67 @@
-# React + Vite
+# Glow Beauty – Luxury Beauty Salon Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Glow Beauty is a modern and responsive **beauty salon website** built with **React + Vite**. It is designed for salons, beauty parlors, skincare studios, bridal makeup artists, and wellness brands that want a premium online presence. The website features a clean layout, elegant design, and user-friendly interface to showcase beauty services professionally.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* Responsive and modern salon website design
+* Attractive hero section with call-to-action buttons
+* About section for salon introduction
+* Services section for beauty treatments
+* Contact section with salon details
+* Appointment booking form
+* Professional footer with quick links and contact info
 
-## React Compiler
+## Services Included
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Hair Styling
+* Bridal Makeup
+* Facial Treatments
+* Nail Art
+* Spa Therapy
+* Skin Care
+* Glowing Skin Care
+* Eyelash Extensions
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* React.js
+* Vite
+* HTML5
+* CSS3
+* JavaScript
+  Live Preview :http://localhost:5173/
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/glow-beauty.git
+```
+
+2. Go to the project folder:
+
+```bash
+cd glow-beauty
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Run the development server:
+
+```bash
+npm run dev
+```
+
+## Project Purpose
+
+This project was created to build a luxury beauty salon website UI with a premium and elegant design. It can be used as a portfolio project, salon business website, or frontend practice project.
+
+## Author
+
+Developed by **Aditi Datey**
+
