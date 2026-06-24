@@ -30,8 +30,10 @@ Glow Beauty is a modern and responsive **beauty salon website** built with **Rea
 * HTML5
 * CSS3
 * JavaScript
-  Live Preview :http://localhost:5173/
-## Installation
+
+  
+### Live Preview :http://localhost:5173/
+ ## Installation
 
 1. Clone the repository:
 
