@@ -1,0 +1,419 @@
+.services {
+  position: relative;
+  padding: 110px 8%;
+  min-height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  isolation: isolate;
+  background: linear-gradient(
+    135deg,
+    #ffd6e8 0%,
+    #f8c8dc 35%,
+    #f4b7d3 65%,
+    #ef9fc4 100%
+  );
+}
+
+/* =========================
+   BACKGROUND IMAGE BEHIND BUBBLES
+========================= */
+.services-bg {
+  position: absolute;
+  inset: -60px 0 -60px 0;
+  z-index: 0;
+  background: url("https://t3.ftcdn.net/jpg/10/93/44/12/360_F_1093441232_jRWwoE2vCk9bD5KTtfKsCKqLqC0ew8Mo.jpg")
+    center center / cover no-repeat;
+  transform: scale(1.08);
+  filter: saturate(1.05) brightness(1.02);
+  transition: transform 0.08s linear;
+  will-change: transform;
+}
+
+/* optional luxury overlay */
+.services-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(rgba(255, 194, 222, 0.28), rgba(244, 160, 200, 0.22)),
+    radial-gradient(circle at top left, rgba(255,255,255,0.25), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255,255,255,0.12), transparent 25%);
+  pointer-events: none;
+}
+
+/* =========================
+   CONTENT
+========================= */
+.services-content {
+  position: relative;
+  z-index: 2;
+}
+
+.services-subtitle {
+  font-size: 15px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.services h2 {
+  font-size: 46px;
+  color: #ffffff;
+  margin-bottom: 16px;
+  font-weight: 700;
+  text-shadow: 0 8px 20px rgba(180, 65, 120, 0.18);
+}
+
+.services-text {
+  max-width: 720px;
+  margin: 0 auto 60px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* =========================
+   GRID
+========================= */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 45px;
+  justify-items: center;
+}
+
+/* =========================
+   CARD WRAPPER
+========================= */
+.crystal-card {
+  perspective: 1400px;
+  width: 260px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+   CRYSTAL BUBBLE
+========================= */
+.crystal-shape {
+  position: relative;
+  width: 230px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* IMPORTANT: keep all shine/glow clipped inside */
+  overflow: hidden;
+  isolation: isolate;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.34) 0%,
+    rgba(255, 245, 250, 0.16) 20%,
+    rgba(255, 210, 230, 0.08) 50%,
+    rgba(255, 240, 247, 0.12) 75%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.34);
+
+  box-shadow:
+    0 20px 40px rgba(189, 95, 142, 0.16),
+    inset 0 1px 1px rgba(255, 255, 255, 0.55),
+    inset 0 -10px 22px rgba(255, 255, 255, 0.08),
+    0 0 20px rgba(255, 220, 235, 0.12);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 42% 58% 46% 54% / 36% 42% 58% 64%;
+  clip-path: inset(0 round 42% 58% 46% 54% / 36% 42% 58% 64%);
+
+  transform-style: preserve-3d;
+  will-change: transform, border-radius, clip-path;
+
+  animation:
+    crystalFloat 8s ease-in-out infinite,
+    crystalMorph 14s ease-in-out infinite;
+
+  transition:
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.6s ease,
+    filter 0.5s ease;
+}
+
+/* main inner shine */
+.crystal-shape::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.38) 0%,
+    rgba(255, 255, 255, 0.06) 28%,
+    rgba(255, 200, 225, 0.10) 46%,
+    rgba(255, 255, 255, 0.04) 62%,
+    rgba(255, 170, 210, 0.08) 78%,
+    rgba(255, 255, 255, 0.16) 100%
+  );
+
+  mix-blend-mode: screen;
+  opacity: 0.9;
+  animation: shineMove 8s ease-in-out infinite;
+}
+
+/* small reflection highlight only INSIDE bubble */
+.crystal-shape::after {
+  content: "";
+  position: absolute;
+  top: 8%;
+  left: 12%;
+  width: 42%;
+  height: 68%;
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.35),
+    rgba(255,255,255,0.12),
+    transparent
+  );
+
+  filter: blur(1px);
+  opacity: 0.65;
+  transform: rotate(-18deg);
+}
+
+/* center glow */
+.crystal-glow {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 90px;
+  height: 90px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.26) 0%,
+    rgba(255, 220, 235, 0.10) 45%,
+    rgba(255, 255, 255, 0) 75%
+  );
+  filter: blur(14px);
+  z-index: 1;
+  animation: pulseGlow 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* =========================
+   TEXT
+========================= */
+.crystal-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 25px 20px;
+  width: 100%;
+}
+
+.crystal-text h3 {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-shadow: 0 3px 10px rgba(120, 30, 80, 0.18);
+}
+
+.crystal-text p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* =========================
+   HOVER
+========================= */
+.crystal-card:hover .crystal-shape {
+  transform: rotateY(8deg) rotateX(6deg) scale(1.03) translateY(-4px);
+  box-shadow:
+    0 24px 50px rgba(185, 70, 120, 0.22),
+    0 0 28px rgba(255, 205, 230, 0.18);
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes crystalFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes crystalMorph {
+  0% {
+    border-radius: 42% 58% 46% 54% / 36% 42% 58% 64%;
+    clip-path: inset(0 round 42% 58% 46% 54% / 36% 42% 58% 64%);
+  }
+  25% {
+    border-radius: 48% 52% 54% 46% / 42% 50% 48% 58%;
+    clip-path: inset(0 round 48% 52% 54% 46% / 42% 50% 48% 58%);
+  }
+  50% {
+    border-radius: 40% 60% 44% 56% / 54% 38% 62% 46%;
+    clip-path: inset(0 round 40% 60% 44% 56% / 54% 38% 62% 46%);
+  }
+  75% {
+    border-radius: 54% 46% 50% 50% / 38% 58% 42% 60%;
+    clip-path: inset(0 round 54% 46% 50% 50% / 38% 58% 42% 60%);
+  }
+  100% {
+    border-radius: 42% 58% 46% 54% / 36% 42% 58% 64%;
+    clip-path: inset(0 round 42% 58% 46% 54% / 36% 42% 58% 64%);
+  }
+}
+
+@keyframes shineMove {
+  0% {
+    transform: translateX(-18%) rotate(0deg);
+  }
+  50% {
+    transform: translateX(10%) rotate(3deg);
+  }
+  100% {
+    transform: translateX(-18%) rotate(0deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.68;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.12);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.68;
+  }
+}
+
+/* stagger bubble movement */
+.crystal-card:nth-child(1) .crystal-shape {
+  animation-delay: 0s, 0s;
+}
+.crystal-card:nth-child(2) .crystal-shape {
+  animation-delay: 0.5s, 0.5s;
+}
+.crystal-card:nth-child(3) .crystal-shape {
+  animation-delay: 1s, 1s;
+}
+.crystal-card:nth-child(4) .crystal-shape {
+  animation-delay: 1.5s, 1.5s;
+}
+.crystal-card:nth-child(5) .crystal-shape {
+  animation-delay: 2s, 2s;
+}
+.crystal-card:nth-child(6) .crystal-shape {
+  animation-delay: 2.5s, 2.5s;
+}
+.crystal-card:nth-child(7) .crystal-shape {
+  animation-delay: 3s, 3s;
+}
+.crystal-card:nth-child(8) .crystal-shape {
+  animation-delay: 3.5s, 3.5s;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 992px) {
+  .services {
+    padding: 90px 6%;
+  }
+
+  .services h2 {
+    font-size: 38px;
+  }
+
+  .service-grid {
+    gap: 35px;
+  }
+
+  .crystal-card {
+    width: 240px;
+    height: 300px;
+  }
+
+  .crystal-shape {
+    width: 210px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services {
+    padding: 80px 5%;
+  }
+
+  .services h2 {
+    font-size: 32px;
+  }
+
+  .services-text {
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .crystal-card {
+    width: 100%;
+    max-width: 260px;
+    margin: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-subtitle {
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+
+  .services h2 {
+    font-size: 28px;
+  }
+
+  .services-text {
+    font-size: 14px;
+  }
+
+  .crystal-shape {
+    width: 200px;
+    height: 245px;
+  }
+
+  .crystal-text h3 {
+    font-size: 21px;
+  }
+}
